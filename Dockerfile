@@ -3,7 +3,7 @@ FROM eu.gcr.io/halfpipe-io/build-openjdk8
 # 2
 LABEL maintainer="Vincenzo Marrazzo <pariamentz@gmail.com>"
 # 3 
-ARG JMETER_VERSION="3.3"
+ARG JMETER_VERSION="5.1.1"
 # 4
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
 ENV JMETER_BIN  ${JMETER_HOME}/bin
