@@ -1,5 +1,5 @@
 # 1
-FROM debian:stretch-slim
+FROM eu.gcr.io/halfpipe-io/build-openjdk8
 # 2
 LABEL maintainer="Vincenzo Marrazzo <pariamentz@gmail.com>"
 # 3 
@@ -12,14 +12,9 @@ ENV JMETER_DOWNLOAD_URL ${MIRROR_HOST}/binaries/apache-jmeter-${JMETER_VERSION}.
 ENV JMETER_PLUGINS_DOWNLOAD_URL http://repo1.maven.org/maven2/kg/apc
 ENV JMETER_PLUGINS_FOLDER ${JMETER_HOME}/lib/ext/
 # 5
-RUN    apk update \
-	&& apk upgrade \
-	&& apk add ca-certificates \
-	&& update-ca-certificates \
-    && apk add --update openjdk8-jre tzdata curl unzip bash \
-    && cp /usr/share/zoneinfo/Europe/Rome /etc/localtime \
-    && echo "Europe/Rome" >  /etc/timezone \
-	&& rm -rf /var/cache/apk/* \
+RUN    apt-get update \
+    && cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
+    && echo "Europe/Berlin" >  /etc/timezone \
 	&& mkdir -p /tmp/dependencies  \
 	&& curl -L --silent ${JMETER_DOWNLOAD_URL} >  /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz  \
 	&& mkdir -p /opt  \
