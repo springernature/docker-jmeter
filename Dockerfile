@@ -1,5 +1,5 @@
 # 1
-FROM alpine:3.6
+FROM debian:stretch-slim
 # 2
 LABEL maintainer="Vincenzo Marrazzo <pariamentz@gmail.com>"
 # 3 
